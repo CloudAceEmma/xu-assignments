@@ -1,0 +1,105 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #0f0f1a;
+  color: #e0e0e0;
+}
+
+.App-header {
+  background-color: #1a1a2e;
+  padding: 20px;
+  color: #e94560;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  text-shadow: 0 0 15px rgba(233, 69, 96, 0.7);
+}
+
+.App-sidebar {
+  background-color: #1a1a2e;
+  width: 200px;
+  padding: 20px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.App-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.App-sidebar li {
+  margin-bottom: 15px;
+}
+
+.App-sidebar a {
+  color: #a0a0a0;
+  text-decoration: none;
+  font-size: 1.1em;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.App-sidebar a:hover,
+.App-sidebar a.active {
+  background-color: #0f3460;
+  color: #e94560;
+  box-shadow: 0 0 8px rgba(233, 69, 96, 0.4);
+}
+
+.App-main-content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Desktop layout */
+@media (min-width: 769px) {
+  .App {
+    flex-direction: row;
+  }
+  .App-main-content {
+    margin-left: 200px; /* Adjust for sidebar width */
+  }
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+  .App-header h1 {
+    font-size: 1.8em;
+  }
+  .App-sidebar {
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+  }
+  .App-sidebar ul {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .App-sidebar li {
+    margin: 5px;
+  }
+  .App-sidebar a {
+    padding: 8px 12px;
+    font-size: 0.9em;
+  }
+  .App-main-content {
+    padding: 15px;
+    margin-left: 0;
+  }
+}

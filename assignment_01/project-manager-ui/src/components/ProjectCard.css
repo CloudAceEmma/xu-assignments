@@ -1,0 +1,89 @@
+.project-card {
+  background-color: #1a1a2e;
+  border: 1px solid #0f3460;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  color: #e0e0e0;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card-title {
+  color: #e94560;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #0f3460;
+  padding-bottom: 5px;
+}
+
+.project-card-detail {
+  font-size: 0.9em;
+  margin-bottom: 5px;
+  color: #b0b0b0;
+}
+
+.status-进行中 {
+  color: #ffc107; /* Amber */
+}
+
+.status-未开始 {
+  color: #17a2b8; /* Info blue */
+}
+
+.status-已完成 {
+  color: #28a745; /* Success green */
+}
+
+.project-card-progress-bar {
+  background-color: #0f3460;
+  border-radius: 5px;
+  height: 8px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.project-card-progress-fill {
+  background-color: #e94560;
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .project-card {
+    margin: 10px 0;
+    padding: 15px;
+  }
+  .project-card-title {
+    font-size: 1.2em;
+  }
+  .project-card-detail {
+    font-size: 0.8em;
+  }
+}
