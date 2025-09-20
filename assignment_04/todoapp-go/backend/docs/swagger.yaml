@@ -1,0 +1,230 @@
+basePath: /api/v1
+definitions:
+  main.Todo:
+    properties:
+      completed:
+        type: boolean
+      created_at:
+        type: string
+      description:
+        type: string
+      due_date:
+        type: string
+      id:
+        type: integer
+      priority:
+        type: integer
+      title:
+        type: string
+      updated_at:
+        type: string
+    required:
+    - title
+    type: object
+host: localhost:8000
+info:
+  contact: {}
+  description: This is a sample server for a todo application.
+  title: Todo Application API
+  version: "1.0"
+paths:
+  /health:
+    get:
+      consumes:
+      - '*/*'
+      description: get the status of the server
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Show the status of the server
+      tags:
+      - health
+  /todos:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all todos, with optional filtering by completion
+        status and pagination.
+      parameters:
+      - description: Filter by completion status
+        in: query
+        name: completed
+        type: boolean
+      - default: 100
+        description: Limit the number of results
+        in: query
+        name: limit
+        type: integer
+      - default: 0
+        description: Offset for pagination
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success response
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get all todos
+      tags:
+      - todos
+    post:
+      consumes:
+      - application/json
+      description: Create a new todo item with title, description, priority, and optional
+        due date.
+      parameters:
+      - description: Todo object to be created
+        in: body
+        name: todo
+        required: true
+        schema:
+          $ref: '#/definitions/main.Todo'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Todo created successfully
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid input
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create a new todo
+      tags:
+      - todos
+  /todos/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a todo item by its ID.
+      parameters:
+      - description: Todo ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Todo deleted successfully
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Todo not found
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Delete a todo
+      tags:
+      - todos
+    put:
+      consumes:
+      - application/json
+      description: Update an existing todo item by its ID.
+      parameters:
+      - description: Todo ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated todo object
+        in: body
+        name: todo
+        required: true
+        schema:
+          $ref: '#/definitions/main.Todo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Todo updated successfully
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid input
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Todo not found
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Update an existing todo
+      tags:
+      - todos
+  /todos/{id}/toggle:
+    patch:
+      consumes:
+      - application/json
+      description: Toggle the completion status of a todo item by its ID.
+      parameters:
+      - description: Todo ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Todo status toggled successfully
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Todo not found
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Toggle todo completion status
+      tags:
+      - todos
+  /todos/all:
+    delete:
+      consumes:
+      - application/json
+      description: Delete all todo items from the database.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: All todos deleted successfully
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Delete all todos
+      tags:
+      - todos
+  /todos/completed:
+    delete:
+      consumes:
+      - application/json
+      description: Delete all todo items that are marked as completed.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Completed todos deleted successfully
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Delete all completed todos
+      tags:
+      - todos
+swagger: "2.0"

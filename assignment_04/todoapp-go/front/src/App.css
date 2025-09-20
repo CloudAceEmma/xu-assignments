@@ -1,0 +1,146 @@
+/* App.css */
+.App {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.todo-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Space between items */
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.todo-form input {
+  flex: 1 1 auto; /* Allow inputs to grow and shrink, and wrap */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.todo-form button {
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.todo-form button:hover {
+  background-color: #218838;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  flex-wrap: wrap; /* Allow items to wrap in editing mode */
+}
+
+.todo-item .edit-mode-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.todo-item .edit-mode-inputs input {
+  flex: 1 1 auto;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.todo-item .edit-mode-inputs button {
+  margin-left: 0; /* Reset margin for buttons within edit-mode-inputs */
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-item.completed span {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.todo-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.todo-item span {
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.todo-item button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.todo-item button:nth-of-type(1) { /* Edit button */
+  background-color: #ffc107;
+  color: #333;
+}
+
+.todo-item button:nth-of-type(1):hover {
+  background-color: #e0a800;
+}
+
+.todo-item button:nth-of-type(2) { /* Delete button */
+  background-color: #dc3545;
+  color: white;
+}
+
+.todo-item button:nth-of-type(2):hover {
+  background-color: #c82333;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.actions button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.actions button:first-child {
+  background-color: #6c757d;
+  color: white;
+}
+
+.actions button:first-child:hover {
+  background-color: #5a6268;
+}
+
+.actions button:last-child {
+  background-color: #dc3545;
+  color: white;
+}
+
+.actions button:last-child:hover {
+  background-color: #c82333;
+}

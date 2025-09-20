@@ -1,0 +1,16 @@
+1，新建一个目录todoapp-go/backend
+2，拷贝spec-req.md 到backend
+3，打开这个todoapp-go项目
+4，在mariadb上新建一个数据库名称：todoapp
+5，修改：spec-req.md  数据库设计
+
+## 数据库设计
+
+- 地址：localhost:3306
+- 用户名：monty
+- 密码：test001
+- 数据库名：todoapp
+
+6，提示词：@backend 请按@spec-req.md 定义的技术要求及api定义，开发后端功能，提供api接口，考虑前端跨域问题，数据库todoapp已经创建，你需要进行建表并进行单元测试。
+
+7，reuse frontend from @todoapp-go/front, change the frontend api to match the spec
